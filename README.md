@@ -1,2 +1,3 @@
-# gestion-de-inventario-de-libreria
-un programa que ayude a los clientes a buscar los artículos que necesitan
+# inventario-de-libreria
+
+Programa que ayudara a los usuarios a encontrar sus articulos requeridos y si estos se encuentran en stock

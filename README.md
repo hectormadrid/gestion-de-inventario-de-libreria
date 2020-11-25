@@ -4,13 +4,13 @@ Programa que ayudara a los usuarios a encontrar sus articulos requeridos, ver si
 
 __BD__
 - [x] Creada base de datos inicial
-- [] Datos integrados a la base para testeo inicial
+- [ ] Datos integrados a la base para testeo inicial
 
 @hectormadrid
 
 __JAVA__
 - [x] Archivos creados para el comienzo del proyecto
-- [] Conexion a DB
+- [ ] Conexion a DB
 
 @zxuru
 

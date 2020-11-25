@@ -14,4 +14,6 @@ __JAVA__
 
 @zxuru
 
-![maOeno](/Images/maomeno.jpg)
+Como Goku ~~nunca~~ dijo una vez
+
+> Estamos [maomeno](/Images/maomeno.jpg)

@@ -8,5 +8,16 @@ Programa que ayudara a los usuarios a encontrar sus articulos requeridos, ver si
 - [] Datos integrados a la base para testeo inicial | - [] Conexion a DB
 @hectormadrid | @zxuru
 
+__BD__
+- [x] Creada base de datos inicial
+- [] Datos integrados a la base para testeo inicial
 
-![maOMeno](/Images/maomeno.jpg)
+@hectormadrid
+
+__JAVA__
+- [x] Archivos creados para el comienzo del proyecto
+- [] Conexion a DB
+
+@zxuru
+
+![maOeno](/Images/maomeno.jpg)

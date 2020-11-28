@@ -62,3 +62,19 @@ insert into articulo values (null,"cuaderno de lenguaje",10,1000,"444-4"),(null,
 insert into cliente values ("111-1","hector", "madrid",1);
 
 insert into boleta values (null,"111-1",1,now(),1200,1);
+
+create table histo_articulo(
+id int auto_increment primary key ,
+articulo_id int , 
+precio int (10),
+fecha datetime,
+foreign key (articulo_id) references articulo(id)
+);
+
+
+delimiter //
+create trigger histo_articulo before update on articulo for each row
+begin
+	insert into histo_articulo values (null,old.id,old.precio,now());
+    end//
+delimiter ;

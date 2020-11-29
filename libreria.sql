@@ -78,3 +78,23 @@ begin
 	insert into histo_articulo values (null,old.id,old.precio,now());
     end//
 delimiter ;
+					   
+					   
+create table histo_provedor (
+id int auto_increment primary key,
+rut_provedor varchar (9),
+apellido varchar (30),
+fono int (9),
+correo_electronico varchar (50)
+);
+
+delimiter //
+create trigger histo_provedor before delete on provedor for each row
+begin
+	insert into histo_provedor values (old.rut,old.nombre,old.apellido,old.fono,old.correo_electronico);
+    end//
+delimiter ;				   
+					   
+					   
+
+					   

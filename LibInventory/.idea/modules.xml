@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/LibInventory.iml" filepath="$PROJECT_DIR$/.idea/LibInventory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibInventory.iml" filepath="$PROJECT_DIR$/LibInventory.iml" />
     </modules>
   </component>
 </project>

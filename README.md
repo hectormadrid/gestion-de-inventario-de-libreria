@@ -10,7 +10,9 @@ __BD__
 
 __JAVA__
 - [x] Archivos creados para el comienzo del proyecto
-- [ ] Conexion a DB
+- [ ] Conexion a DB WIP
+- [ ] Creacion de mas ventanas interactuables WIP
+- [ ] Creacion consultas SQL general WIP
 
 @zxuru
 

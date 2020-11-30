@@ -1,11 +1,10 @@
-package persistence;
+package com.zxuru.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexion implements ConexionStandar {
-
+public class Conexion implements ConexionStandar{
     private String ip;
     private String username;
     private String passwd;
@@ -37,4 +36,3 @@ public class Conexion implements ConexionStandar {
         return con;
     }
 }
-

@@ -1,4 +1,4 @@
-package model;
+package com.zxuru.model;
 
 import javax.swing.*;
 

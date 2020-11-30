@@ -1,6 +1,6 @@
 package com.zxuru;
 
-import persistence.ConexionStandar;
+//import com.zxuru.persistence.ConexionStandar;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 public class LogIn extends JFrame{
     private JPanel pnlPrin;
     private JPanel panel1;
-    private JPasswordField passwordField1;
     private JButton borrarButton;
     private JButton entrarButton;
     private JButton a1Button;
@@ -22,10 +21,10 @@ public class LogIn extends JFrame{
     private JButton a5Button;
     private JButton a6Button;
     private JTextField rutTxt;
-    private ConexionStandar con;
+    //private ConexionStandar con;
     StringBuilder sb;
 
-    public LogIn(ConexionStandar con){
+    public LogIn(/*ConexionStandar con*/){
         super("Login");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +32,7 @@ public class LogIn extends JFrame{
         add(pnlPrin);
         pack();
 
-        this.con = con;
+        //this.con = con;
 
 
 

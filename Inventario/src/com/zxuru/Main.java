@@ -1,8 +1,9 @@
 package com.zxuru;
 
 import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
-//import persistence.Conexion;
-//import persistence.ConexionStandar;
+import com.zxuru.gui.LogIn;
+import com.zxuru.persistence.Conexion;
+import com.zxuru.persistence.ConexionStandar;
 
 import javax.swing.*;
 import java.sql.SQLException;

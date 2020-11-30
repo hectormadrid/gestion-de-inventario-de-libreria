@@ -15,6 +15,7 @@ public class LogIn extends JFrame{
     private ConexionStandar con;
 
     private DaoTrabajador daoTrab;
+    private Principal princi;
 
     public LogIn(ConexionStandar con) {
         super("Login");
@@ -33,12 +34,13 @@ public class LogIn extends JFrame{
     private void loginButton(ActionEvent actionEvent){
         var code = rutxt.getText().trim().toLowerCase();
 
-        Trabajador trabajador = new Trabajador(null,null,null);
+        Trabajador trabajador;
 
         if (code.isEmpty()){
             JOptionPane.showMessageDialog(this,"Campo rut vacio");
         }else{
-            if ()
+            trabajador = daoTrab.getLogin(code);
+            SwingUtilities.invokeLater(() -> princi = new Principal(this,trabajador));
         }
     }
 }

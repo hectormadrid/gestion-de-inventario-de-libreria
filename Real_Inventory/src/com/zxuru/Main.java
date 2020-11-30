@@ -23,6 +23,7 @@ public class Main {
         UIManager.put( "Component.arc", 999 );
         UIManager.put( "ProgressBar.arc", 999 );
         UIManager.put( "TextComponent.arc", 999 );
+
         try {
             ConexionStandar con = new Conexion(
                     "localhost",

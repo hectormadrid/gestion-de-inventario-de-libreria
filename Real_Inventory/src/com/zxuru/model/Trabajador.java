@@ -1,10 +1,18 @@
 package com.zxuru.model;
 
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Trabajador extends UsuarioBase{
     private String entrada;
     private String salida;
+
+    public Trabajador(String rut, String nombre, String apellido) {
+        super(rut, nombre, apellido);
+    }
 
     public Trabajador(String rut, String nombre, String apellido, String entrada, String salida) {
         super(rut, nombre, apellido);
@@ -33,4 +41,5 @@ public class Trabajador extends UsuarioBase{
         else
             JOptionPane.showMessageDialog(null,"Error ingreso nulo salida","ERROR",JOptionPane.ERROR_MESSAGE);
     }
+
 }

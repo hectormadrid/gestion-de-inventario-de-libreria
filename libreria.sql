@@ -76,6 +76,7 @@ fecha datetime,
 foreign key (articulo_id) references articulo(id)
 );
 
+-- Almacenamiento precio anterior
 
 delimiter //
 create trigger histo_articulo before update on articulo for each row
@@ -95,7 +96,7 @@ fono int (9),
 correo_electronico varchar (50)
 );
 
--- Almacenamiento precio anterior
+-- Almacenamiento proveedor anterior
 
 delimiter //
 create trigger histo_provedor before delete on provedor for each row

@@ -96,5 +96,37 @@ begin
 delimiter ;				   
 					   
 					   
+DELIMITER //
+create procedure activar_producto (IN _id int(10) )
+BEGIN
+    DECLARE _activador INT;
 
+    SET _activador = (SELECT COUNT(*) from articulo WHERE id = _id);
+
+    IF _activador = 1 THEN 
+			update articulo set activo = 1 where id = _id ;
+            select 'se a activado el producto' as 'alerta';
+			else
+            select 'no se a encontrado el producto ' as 'alerta';
+        END IF;
+        
+END //
+DELIMITER ;
+
+DELIMITER //
+create procedure desactivar_producto (IN _id int(10) )
+BEGIN
+    DECLARE _desactivar INT;
+
+    SET _desactivar = (SELECT COUNT(*) from articulo WHERE id = _id);
+
+    IF _desactivar = 1 THEN 
+			update articulo set activo = 0 where id = _id ;
+SELECT 'se a desactivado el producto' AS 'alerta';
+			else
+            select 'no se a encontrado el producto ' as 'alerta';
+        END IF;
+        
+END //
+DELIMITER ;
 					   

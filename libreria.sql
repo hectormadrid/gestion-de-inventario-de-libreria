@@ -95,12 +95,16 @@ fono int (9),
 correo_electronico varchar (50)
 );
 
+-- Almacenamiento precio anterior
+
 delimiter //
 create trigger histo_provedor before delete on provedor for each row
 begin
 	insert into histo_provedor values (old.rut,old.nombre,old.apellido,old.fono,old.correo_electronico);
     end//
 delimiter ;
+
+-- Activacion de Productos
 
 DELIMITER //
 create procedure activar_producto (IN _id int(10) )
@@ -118,6 +122,8 @@ BEGIN
         
 END //
 DELIMITER ;
+
+-- Desactivacion de productos
 
 DELIMITER //
 create procedure desactivar_producto (IN _id int(10) )

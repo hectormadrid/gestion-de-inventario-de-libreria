@@ -7,15 +7,14 @@ __BD__
 - [ ] Problemas tabla boleta
 - [ ] Datos integrados a la base para testeo inicial
 
-@hectormadrid
-
 __JAVA__
 - [x] Archivos creados para el comienzo del proyecto
 - [x] Conexion a DB 
 - [x] Creacion de mas ventanas interactuables 
 - [x] Creacion consultas SQL general 
 
-@zxuru
+@zxuru          = Hugo
+@hectormadrid   = Hector
 
 Como Goku ~~nunca~~ dijo una vez
 

@@ -11,29 +11,26 @@ import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 
-public class Principal extends JFrame {
-    private Trabajador trab;
-    private JPanel panel1;
-    private JList list1;
-    private JButton refrescarButton;
-    private JTable table1;
-    private JButton agregarArticuloALaButton;
-    private JButton retrocederButton;
-    private JTabbedPane tabbedPane1;
+public class Cambios extends JFrame {
 
-    private DefaultListModel listModel;
     private DefaultTableModel tableModel;
 
     private Conexion myCon;
     private DaoArticulo daoArt;
+    private JPanel panel1;
+    private JTable table1;
+    private JButton refrescarButton;
+    private JButton activarArticuloButton;
+    private JButton retrocederButton;
+    private JButton desactivarArticuloButton;
 
-    public Principal(){
-        super("");
+    public Cambios() {
+        super("Cambios a las listas");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
         add(panel1);
-        setSize(new Dimension(500,600));
+        setSize(new Dimension(400, 500));
         pack();
 
         String ip = "localhost";
@@ -57,39 +54,44 @@ public class Principal extends JFrame {
         tableModel.addColumn("Nombre");
         tableModel.addColumn("Cantidad");
         tableModel.addColumn("Precio");
-
-        listModel = new DefaultListModel();
-        list1.setModel(listModel);
+        tableModel.addColumn("Rut_proveedor");
+        tableModel.addColumn("Activo");
 
         refreshTable();
-
-        agregarArticuloALaButton.addActionListener(e -> {
-
-        });
-
-        refrescarButton.addActionListener(e -> {
-            refreshTable();
-        });
 
         retrocederButton.addActionListener(e -> {
             this.dispose();
             new Menu().setVisible(true);
         });
+
+        activarArticuloButton.addActionListener(e -> {
+            var opt = JOptionPane.showInputDialog("Ingrese ID\nA activar");
+            daoArt.activateArt(Integer.parseInt(opt));
+            refreshTable();
+        });
+
+        desactivarArticuloButton.addActionListener(e -> {
+            var opt = JOptionPane.showInputDialog("Ingrese ID\nA activar");
+            daoArt.deactivateArt(Integer.parseInt(opt));
+            refreshTable();
+        });
     }
 
     public void refreshTable() {
-
         List<Articulo> tarjList = daoArt.getAll();
+        String activo = null;
 
         for (int i = tableModel.getRowCount(); i > 0; i--) {
             tableModel.removeRow(i - 1);
         }
 
         for (Articulo t : tarjList) {
-            if (t.getActive()==1){
-                String[] val = new String[]{String.valueOf(t.getId()),t.getNombre(), String.valueOf(t.getCantidad()), String.valueOf(t.getPrecio())};
-                tableModel.addRow(val);
-            }
+            if (t.getActive() == 0)
+                activo = "No";
+            else if (t.getActive() == 1)
+                activo = "Si";
+            String[] val = new String[]{String.valueOf(t.getId()), t.getNombre(), String.valueOf(t.getCantidad()), String.valueOf(t.getPrecio()), t.getRut_proveedor(), activo};
+            tableModel.addRow(val);
         }
     }
 }

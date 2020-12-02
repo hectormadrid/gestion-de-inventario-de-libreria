@@ -8,13 +8,18 @@ public class Articulo {
     private Integer cantidad;
     private Integer precio;
     private String rut_proveedor;
+    private Integer active;
 
-    public Articulo(Integer id, String nombre, Integer cantidad, Integer precio, String rut_proveedor) {
+    public Articulo() {
+    }
+
+    public Articulo(Integer id, String nombre, Integer cantidad, Integer precio, String rut_proveedor, Integer active) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
         this.rut_proveedor = rut_proveedor;
+        this.active = active;
     }
 
     public Integer getId() {
@@ -70,5 +75,17 @@ public class Articulo {
             this.rut_proveedor = rut_proveedor;
         else
             JOptionPane.showMessageDialog(null,"Error ingreso nulo rut_proveedor","ERROR",JOptionPane.ERROR_MESSAGE);
+    }
+
+    public Integer getActive() {
+        return active;
+    }
+
+    public void setActive(Integer active) {
+        this.active = active;
+        if (!active.equals(null))
+            this.active = active;
+        else
+            JOptionPane.showMessageDialog(null,"Error ingreso nulo active","ERROR",JOptionPane.ERROR_MESSAGE);
     }
 }

@@ -30,6 +30,7 @@ create table trabajador (
 rut varchar (30),
 nombre varchar (30),
 apellido varchar (30),
+contra varchar (50),
 entrada datetime,
 salida datetime 
 );

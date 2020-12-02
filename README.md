@@ -17,7 +17,9 @@ User | Nombre uwu
 * /Real_Inventory
 * /out
 * /artifacts
-* /Real_Inventory_jar
+  * /Real_Inventory_jar
+  
+Dentro de la ultima carpeta encuentran __*Real_Inventory_jar*__ ese es el ejecutable de proyecto
 
 Como Goku ~~nunca~~ dijo una vez
 

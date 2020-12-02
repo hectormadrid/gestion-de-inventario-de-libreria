@@ -34,6 +34,7 @@ public class Cambios extends JFrame {
     private JTable table2;
     private JTable table3;
     private JButton despedirButton;
+    private JButton contratarButton;
 
     public Cambios() {
         super("Cambios a las listas");
@@ -94,6 +95,23 @@ public class Cambios extends JFrame {
 
         refrescarButton.addActionListener(e -> {
             refreshTable();
+        });
+
+        contratarButton.addActionListener(e -> {
+            var rot = JOptionPane.showInputDialog(null, "Ingrese su rut");
+            var cant = daoTrabajador.findUser(Integer.parseInt(rot));
+
+            if (cant.getRut().equals("0")) {
+                var rut = rot;
+                var name = JOptionPane.showInputDialog(null, "Ingrese su nombre");
+                var ape = JOptionPane.showInputDialog(null, "Ingrese su apellido");
+                var contra = JOptionPane.showInputDialog(null, "Ingrese su contraseña");
+
+                daoTrabajador.contrataWorker(rut, name, ape,contra);
+
+            } else {
+                JOptionPane.showMessageDialog(null,"El trabajador ya esta ingresado","ERROR",JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         activarArticuloButton.addActionListener(e -> {

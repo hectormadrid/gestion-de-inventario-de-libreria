@@ -1,8 +1,10 @@
 package com.zxuru.dao;
 
+import com.zxuru.model.Cliente;
 import com.zxuru.model.Trabajador;
 import com.zxuru.Conexion;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -61,6 +63,22 @@ public class DaoTrabajador {
         return Collections.EMPTY_LIST;
     }
 
+    public Trabajador findUser(int id){
+        String sql = "SELECT COUNT(trabajador.rut) FROM trabajador WHERE rut ='"+id+"'";
+        Trabajador oTraba = new Trabajador(null,null,null);
+        try{
+            Connection con = myCon.getCon();
+            Statement statement = con.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet.next()) {
+                oTraba.setRut(resultSet.getString(1));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return oTraba;
+    }
+
     public void despedirWorker(String rut) {
         String sql = "delete from trabajador where rut = '" + rut + "';";
         try {
@@ -70,6 +88,18 @@ public class DaoTrabajador {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+    }
+
+    public void contrataWorker(String rut, String nombre, String apellido, String contra) {
+        String sql = "INSERT INTO trabajador VALUES ('" + rut + "','" + nombre + "','" + apellido + "','" + contra + "',null,null)";
+        try {
+            Connection con = myCon.getCon();
+            Statement statement = con.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            JOptionPane.showMessageDialog(null, "ERROR " + throwables, "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

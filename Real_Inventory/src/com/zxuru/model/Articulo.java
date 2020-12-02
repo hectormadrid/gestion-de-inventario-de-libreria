@@ -1,6 +1,7 @@
 package com.zxuru.model;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class Articulo {
     private Integer id;
@@ -87,5 +88,35 @@ public class Articulo {
             this.active = active;
         else
             JOptionPane.showMessageDialog(null,"Error ingreso nulo active","ERROR",JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Articulo articulo = (Articulo) o;
+        return Objects.equals(id, articulo.id) &&
+                Objects.equals(nombre, articulo.nombre) &&
+                Objects.equals(cantidad, articulo.cantidad) &&
+                Objects.equals(precio, articulo.precio) &&
+                Objects.equals(rut_proveedor, articulo.rut_proveedor) &&
+                Objects.equals(active, articulo.active);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre, cantidad, precio, rut_proveedor, active);
+    }
+
+    @Override
+    public String toString() {
+        return "Articulo{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", cantidad=" + cantidad +
+                ", precio=" + precio +
+                ", rut_proveedor='" + rut_proveedor + '\'' +
+                ", active=" + active +
+                '}';
     }
 }

@@ -15,14 +15,16 @@ public class Principal extends JFrame {
     private Trabajador trab;
     private JPanel panel1;
     private JList list1;
-    private JButton refrescarButton;
     private JTable table1;
     private JButton agregarArticuloALaButton;
     private JButton retrocederButton;
     private JTabbedPane tabbedPane1;
+    private JComboBox comboBox1;
+    private JTextField textField1;
 
     private DefaultListModel listModel;
     private DefaultTableModel tableModel;
+    private DefaultComboBoxModel comboBoxModel;
 
     private Conexion myCon;
     private DaoArticulo daoArt;
@@ -58,17 +60,13 @@ public class Principal extends JFrame {
         tableModel.addColumn("Cantidad");
         tableModel.addColumn("Precio");
 
-        listModel = new DefaultListModel();
-        list1.setModel(listModel);
+        comboBoxModel = new DefaultComboBoxModel();
+        comboBox1.setModel(comboBoxModel);
 
         refreshTable();
 
         agregarArticuloALaButton.addActionListener(e -> {
-
-        });
-
-        refrescarButton.addActionListener(e -> {
-            refreshTable();
+            addArtic();
         });
 
         retrocederButton.addActionListener(e -> {
@@ -77,18 +75,37 @@ public class Principal extends JFrame {
         });
     }
 
+    public void addArtic(){
+        try{
+            var combo = comboBox1.getSelectedItem();
+            Integer cant = Integer.valueOf(textField1.getText());
+
+            var id = daoArt.getID(String.valueOf(combo));
+            var identifi = id.getId();
+            var price = id.getPrecio();
+            var total = price * cant;
+
+            tableModel.addRow(new String[]{String.valueOf(identifi), (String) combo, String.valueOf(cant), String.valueOf(total)});
+        } catch (Exception exc){
+            JOptionPane.showMessageDialog(null,"No ingreso cantidad","ERROR",JOptionPane.ERROR_MESSAGE);
+            textField1.setText(null);
+            textField1.grabFocus();
+        }
+
+    }
+
     public void refreshTable() {
 
         List<Articulo> tarjList = daoArt.getAll();
 
+        comboBoxModel.removeAllElements();
         for (int i = tableModel.getRowCount(); i > 0; i--) {
             tableModel.removeRow(i - 1);
         }
 
         for (Articulo t : tarjList) {
             if (t.getActive()==1){
-                String[] val = new String[]{String.valueOf(t.getId()),t.getNombre(), String.valueOf(t.getCantidad()), String.valueOf(t.getPrecio())};
-                tableModel.addRow(val);
+                comboBoxModel.addElement(t.getNombre());
             }
         }
     }

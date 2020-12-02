@@ -45,6 +45,22 @@ public class DaoArticulo {
         return Collections.EMPTY_LIST;
     }
 
+    public Articulo getID(String name){
+        Articulo oArt = new Articulo();
+        String sql = "SELECT id,precio FROM articulo WHERE nombre='"+name+"'";
+        Connection con = myCon.getCon();
+        try (Statement statement = con.createStatement()){
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet.next()) {
+                oArt.setId(resultSet.getInt(1));
+                oArt.setPrecio(resultSet.getInt("precio"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return oArt;
+    }
+
     public void activateArt(int id){
         String sql = "CALL activar_producto("+id+")";
         try{
@@ -66,5 +82,7 @@ public class DaoArticulo {
             throwables.printStackTrace();
         }
     }
+
+
 }
 

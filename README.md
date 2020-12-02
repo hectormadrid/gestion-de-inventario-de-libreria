@@ -15,9 +15,9 @@ User | Nombre uwu
 # Para ejecutar el proyecto 
 
 1. /Real_Inventory
-1. /out
-1. /artifacts
-  1. /Real_Inventory_jar
+   1. /out
+      1. /artifacts
+         1. /Real_Inventory_jar
 
 Como Goku ~~nunca~~ dijo una vez
 

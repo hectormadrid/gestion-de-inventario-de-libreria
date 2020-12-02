@@ -61,6 +61,8 @@ public class DaoArticulo {
         return oArt;
     }
 
+
+
     public void activateArt(int id){
         String sql = "CALL activar_producto("+id+")";
         try{

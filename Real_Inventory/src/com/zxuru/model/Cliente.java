@@ -1,6 +1,7 @@
 package com.zxuru.model;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class Cliente extends UsuarioBase{
     private Integer boleta;
@@ -19,5 +20,25 @@ public class Cliente extends UsuarioBase{
             this.boleta = boleta;
         else
             JOptionPane.showMessageDialog(null,"Error ingreso nulo boleta","ERROR",JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(boleta, cliente.boleta);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(boleta);
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "boleta=" + boleta +
+                '}';
     }
 }

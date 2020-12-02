@@ -2,6 +2,8 @@ package com.zxuru.gui;
 
 import com.zxuru.Conexion;
 import com.zxuru.dao.DaoArticulo;
+import com.zxuru.dao.DaoBoleta;
+import com.zxuru.dao.DaoCliente;
 import com.zxuru.model.Articulo;
 import com.zxuru.model.Trabajador;
 
@@ -21,6 +23,8 @@ public class Principal extends JFrame {
     private JTabbedPane tabbedPane1;
     private JComboBox comboBox1;
     private JTextField textField1;
+    private JButton registrarProductosButton;
+    private JButton eliminarUnProductoButton;
 
     private DefaultListModel listModel;
     private DefaultTableModel tableModel;
@@ -28,14 +32,16 @@ public class Principal extends JFrame {
 
     private Conexion myCon;
     private DaoArticulo daoArt;
+    private DaoCliente daoClie;
+    private DaoBoleta daoBoleta;
 
-    public Principal(){
+    public Principal() {
         super("");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
         add(panel1);
-        setSize(new Dimension(500,600));
+        setSize(new Dimension(500, 600));
         pack();
 
         String ip = "localhost";
@@ -50,7 +56,10 @@ public class Principal extends JFrame {
                     "Error de conexión:" + e.toString(), "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
+
         daoArt = new DaoArticulo(myCon);
+        daoClie = new DaoCliente(myCon);
+        daoBoleta = new DaoBoleta(myCon);
 
         tableModel = new DefaultTableModel();
         table1.setModel(tableModel);
@@ -69,14 +78,41 @@ public class Principal extends JFrame {
             addArtic();
         });
 
+        registrarProductosButton.addActionListener(e -> {
+            if (tableModel.getRowCount() != 0) {
+                var opt = JOptionPane.showConfirmDialog(null, "Registrara los productos en una boleta\nEsta seguro?", "Confirmacion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                switch (opt) {
+                    case JOptionPane.YES_OPTION:
+                        var rot = JOptionPane.showInputDialog(null, "Ingrese su rut");
+                        var cant = daoClie.findUser(Integer.parseInt(rot));
+
+                        if (cant.getRut().equals("0")) {
+                            var rut = rot;
+                            var name = JOptionPane.showInputDialog(null, "Ingrese su nombre");
+                            var ape = JOptionPane.showInputDialog(null, "Ingrese su apellido");
+
+                            daoClie.insertCliente(rut, name, ape);
+
+                        } else {
+
+                        }
+                        break;
+                    case JOptionPane.NO_OPTION:
+                        break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null,"No ingreso productos a su lista");
+            }
+        });
+
         retrocederButton.addActionListener(e -> {
             this.dispose();
             new Menu().setVisible(true);
         });
     }
 
-    public void addArtic(){
-        try{
+    public void addArtic() {
+        try {
             var combo = comboBox1.getSelectedItem();
             Integer cant = Integer.valueOf(textField1.getText());
 
@@ -86,12 +122,11 @@ public class Principal extends JFrame {
             var total = price * cant;
 
             tableModel.addRow(new String[]{String.valueOf(identifi), (String) combo, String.valueOf(cant), String.valueOf(total)});
-        } catch (Exception exc){
-            JOptionPane.showMessageDialog(null,"No ingreso cantidad","ERROR",JOptionPane.ERROR_MESSAGE);
+        } catch (Exception exc) {
+            JOptionPane.showMessageDialog(null, "No ingreso cantidad", "ERROR", JOptionPane.ERROR_MESSAGE);
             textField1.setText(null);
             textField1.grabFocus();
         }
-
     }
 
     public void refreshTable() {
@@ -104,7 +139,7 @@ public class Principal extends JFrame {
         }
 
         for (Articulo t : tarjList) {
-            if (t.getActive()==1){
+            if (t.getActive() == 1) {
                 comboBoxModel.addElement(t.getNombre());
             }
         }

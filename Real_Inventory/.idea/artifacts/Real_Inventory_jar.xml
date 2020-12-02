@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Real_Inventory:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Real_Inventory_jar</output-path>
+    <root id="archive" name="Real_Inventory.jar">
+      <element id="module-output" name="Real_Inventory" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/mariadb-java-client-2.7.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/flatlaf-0.44.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/flatlaf-intellij-themes-0.44.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

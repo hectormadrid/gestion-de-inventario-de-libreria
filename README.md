@@ -4,15 +4,16 @@ Programa que ayudara a los usuarios a encontrar sus articulos requeridos, ver si
 
 __BD__
 - [x] Creada base de datos inicial
+- [ ] Problemas tabla boleta
 - [ ] Datos integrados a la base para testeo inicial
 
 @hectormadrid
 
 __JAVA__
 - [x] Archivos creados para el comienzo del proyecto
-- [ ] Conexion a DB WIP
-- [ ] Creacion de mas ventanas interactuables WIP
-- [ ] Creacion consultas SQL general WIP
+- [x] Conexion a DB 
+- [x] Creacion de mas ventanas interactuables 
+- [x] Creacion consultas SQL general 
 
 @zxuru
 
